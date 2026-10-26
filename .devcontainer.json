@@ -1,0 +1,52 @@
+{
+  "name": "Cloud AI DevBox",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    },
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "bash setup.sh",
+  "forwardPorts": [3000, 4173, 5000, 8080],
+  "portsAttributes": {
+    "3000": {
+      "label": "Web app",
+      "onAutoForward": "notify"
+    },
+    "4173": {
+      "label": "Web preview",
+      "onAutoForward": "notify"
+    },
+    "5000": {
+      "label": "Development server",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "Flutter web preview",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Dart-Code.dart-code",
+        "Dart-Code.flutter",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "GitHub.vscode-pull-request-github"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "remoteUser": "vscode"
+}
