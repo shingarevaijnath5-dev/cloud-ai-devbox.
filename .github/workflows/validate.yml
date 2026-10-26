@@ -1,0 +1,18 @@
+name: Validate DevBox setup
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Validate devcontainer JSON
+        run: python3 -m json.tool .devcontainer.json >/dev/null
+      - name: Check setup shell syntax
+        run: bash -n setup.sh
